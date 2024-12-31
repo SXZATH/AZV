@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #211f81; /* Fondo negro para todo el body */
+    color: white;
+}
+
+section {
+    padding: 60px 0;
+}
+
+/* Cambiar el color general del texto de los enlaces en el navbar */
+.navbar .nav-link {
+    color: white; /* Cambia "white" por el color que prefieras */
+}
+
+/* Cambiar el color del enlace activo */
+.navbar .nav-link.active {
+    color: #fa3c3c; /* Cambia "#ff6347" por el color deseado */
+}
+
+/* Cambiar el color del texto al pasar el ratón */
+.navbar .nav-link:hover {
+    color: #9f9fa0; /* Cambia "#00ff00" por el color deseado */
+}
+
+/* Fondo negro para la sección de inicio */
+#home {
+    background-color: #020202; /* Fondo negro */
+    color: #ffffff; /* Color de texto blanco */
+}
+
+/* Fondo negro para la sección de proyectos */
+#proyectos {
+    background-color: #000000; /* Fondo negro */
+    color: #ffffff; /* Color de texto blanco */
+}
+
+.navbar .navbar-brand {
+
+    color: white;
+
+}
+
+/* Fondo negro para la sección de contacto */
+#contacto {
+    background-color: #020202; /* Fondo negro */
+    color: #ffffff; /* Color de texto blanco */
+    font-style: normal;
+}
+
+/* Estilos para los proyectos */
+.card img {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+/* Estilo de los proyectos en desarrollo */
+.badge {
+    font-size: 0.9em;
+    padding: 0.5em;
+    display: block;
+    text-align: center;
+}
+
+.badge.bg-warning {
+    background-color: #000000; /* Fondo negro */
+    color: #ffffff; /* Color de texto blanco */
+}
+
+/* Ajuste para proyectos */
+.card-body {
+    position: relative;
+    padding: 1.5em;
+    background-color: #000000; /* Fondo negro */
+    color: #ffffff; /* Color de texto blanco */
+}
+
+
+/* Modal AZV */
+
+/* Personalización del fondo del modal */
+.custom-modal .modal-content {
+    background-color: #060606; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid #111111; /* Borde rojo */
+}
+
+/* Personalización del encabezado del modal */
+.custom-modal .modal-header {
+    background-color: #050505; /* Fondo oscuro para el header */
+    border-bottom: 2px solid #252525; /* Línea inferior roja */
+}
+
+/* Personalización del título del modal */
+.custom-modal .modal-title {
+    font-size: 1.5rem; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    color: #ececec; /* Color rojo */
+}
+
+/* Botón de cierre del modal */
+.custom-modal .btn-close {
+    background-color: transparent; /* Fondo transparente */
+    border: 1px solid #ffffff; /* Borde blanco */
+    border-radius: 50%; /* Forma circular */
+}
+
+/* Botón en el pie del modal */
+.custom-modal .modal-footer .btn-secondary {
+    background-color: #3a3939; /* Fondo rojo */
+    color: #ffffff; /* Texto blanco */
+    border: none; /* Sin bordes */
+}
+
+.custom-modal .modal-footer .btn-secondary:hover {
+    background-color: #4b4b4b; /* Rojo más claro al pasar el mouse */
+    color: #000000; /* Texto negro */
+}
+
+/* Personalización del enlace dentro del modal */
+.custom-modal .modal-body a {
+    color: #ff9e00; /* Color naranja para enlaces */
+    text-decoration: underline; /* Subrayado */
+}
+
+.custom-modal .modal-body a:hover {
+    color: #ffd700; /* Color dorado al pasar el mouse */
+}
+
+/* Animación de entrada */
+@keyframes modal-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación de salida */
+@keyframes modal-fade-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+/* Aplicar las animaciones */
+.modal.fade .modal-dialog {
+    transition: none; /* Evitar conflicto con transiciones de Bootstrap */
+    animation-duration: 0.5s; /* Duración de la animación */
+}
+
+.modal.fade.show .modal-dialog {
+    animation-name: modal-fade-in; /* Animación al mostrar */
+}
+
+.modal.fade:not(.show) .modal-dialog {
+    animation-name: modal-fade-out; /* Animación al cerrar */
+}

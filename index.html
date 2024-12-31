@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SXZATH SFT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Suite & tools</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#proyectos">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Inicio -->
+    <section id="home">
+        <div class="container">
+            <h1 class="text-center">General Proyects</h1>
+            <p class="text-center">Bash proyects & OSINT</p>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="proyectos">
+        <div class="container">
+            <h2 class="text-center mb-4">Proyectos</h2>
+            <div class="row">
+                <!-- Proyecto AZV -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="azv.PNG" class="card-img-top" alt="AZV">
+                        <div class="card-body">
+                            <h5 class="card-title">AZV Suite</h5>
+                            <p class="card-text">AZV sistema de paquetes bash, similar a la instalación de librerías Python para desarrollo y ciberseguridad.</p>
+                            <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalAZV">
+                                Ver más
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 2 (En desarrollo) -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="404.PNG" class="card-img-top" alt="Void">
+                        <div class="card-body">
+                            <p class="card-text">Proyecto en desarrollo</p>
+                            <span class="badge bg-warning text-dark">En Desarrollo</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 3 (En desarrollo) -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="404.PNG" class="card-img-top" alt="Void">
+                        <div class="card-body">
+                            <p class="card-text">Proyecto en desarrollo</p>
+                            <span class="badge bg-warning text-dark">En Desarrollo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para AZV -->
+    <div class="modal fade custom-modal" id="modalAZV" tabindex="-1" aria-labelledby="modalAZVLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAZVLabel">Detalles del Proyecto AZV</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>AZV es un sistema de gestión de paquetes para Bash que simplifica la instalación de librerías y el scripting.</p>
+                    <ul>
+                        <li>Se instala y configura automaticamente por para menos intervencion manual</li>
+                        <li>Los modulos son importados a scripts con 'source utils' para usar las funciones o variables dentro.</li>
+                        <li>Comandos de AZV:</li>
+                        <li>'azv --help' - Proporciona ayuda en la herramienta.</li>
+                        <li>'azv list' - Lista todos los modulos instalados en el sistema. </li>
+                        <li>'azv install' - instala los modulos como vulnhammer para seguridad ssh.</li>
+                        <li>'azv remove' - Remueve los modulos seleccionados</li>
+                    </ul>
+                    <p>Download for bash <a href="https://www.dropbox.com/scl/fi/vrktgogwo8b64mparxvx5/setup.sh?rlkey=a6kzemfrm9986zk9054saxd3l&st=40i2c8as&dl=1" download="_blank">Download</a>.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sección Contacto -->
+    <section id="contacto">
+        <div class="container text-center">
+            <h2>Contacto</h2>
+            <p>Discord user & gmail.</p>
+            <p><a class="text-white">sxzath | sxzath@gmail.com</a></p>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
