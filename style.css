@@ -83,13 +83,13 @@ section {
     background-color: #060606; /* Fondo oscuro */
     color: #ffffff; /* Texto blanco */
     border-radius: 10px; /* Bordes redondeados */
-    border: 2px solid #111111; /* Borde rojo */
+    border: 2px solid #050505; /* Borde rojo */
 }
 
 /* Personalización del encabezado del modal */
 .custom-modal .modal-header {
     background-color: #050505; /* Fondo oscuro para el header */
-    border-bottom: 2px solid #252525; /* Línea inferior roja */
+    border-bottom: 2px solid #050505; /* Línea inferior roja */
 }
 
 /* Personalización del título del modal */
@@ -102,7 +102,7 @@ section {
 /* Botón de cierre del modal */
 .custom-modal .btn-close {
     background-color: transparent; /* Fondo transparente */
-    border: 1px solid #ffffff; /* Borde blanco */
+    border: 1px solid #050505; /* Borde blanco */
     border-radius: 50%; /* Forma circular */
 }
 
@@ -116,6 +116,12 @@ section {
 .custom-modal .modal-footer .btn-secondary:hover {
     background-color: #4b4b4b; /* Rojo más claro al pasar el mouse */
     color: #000000; /* Texto negro */
+}
+
+.dropdownMENU {
+
+    background: #000;
+
 }
 
 /* Personalización del enlace dentro del modal */
@@ -164,4 +170,32 @@ section {
 
 .modal.fade:not(.show) .modal-dialog {
     animation-name: modal-fade-out; /* Animación al cerrar */
+}
+
+/* Personalizar el color y estilo del menú desplegable */
+.dropdown-menu {
+    background-color: #020202; /* Fondo oscuro */
+    border: 1px solid #050505; /* Borde del menú */
+}
+
+/* Estilos para los elementos dentro del dropdown */
+.dropdown-item {
+    color: #fff; /* Color del texto en el dropdown */
+    background-color: #050505;
+    font-weight: bold; /* Hacer el texto en negrita */
+    padding: 10px 15px; /* Aumentar el espacio interno de los elementos */
+    text-align: center; /* Alinear el texto al centro */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el hover */
+}
+
+/* Efecto cuando se pasa el ratón sobre un item del dropdown */
+.dropdown-item:hover {
+    background-color: #fa3c3c; /* Cambiar el fondo al pasar el ratón */
+    color: #fff; /* Mantener el color blanco del texto */
+}
+
+/* Estilo cuando el dropdown está activo */
+.dropdown-item:active {
+    background-color: #ff5733; /* Cambiar el fondo cuando se hace clic */
 }
