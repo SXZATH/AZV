@@ -1,11 +1,23 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #211f81; /* Fondo negro para todo el body */
+    background-color: #050505; /* Fondo negro para todo el body */
     color: white;
 }
 
 section {
     padding: 60px 0;
+}
+
+#sidebar {
+
+    background-color: #020202;
+
+}
+
+#sidebar a {
+
+    font-size: 20px;
+
 }
 
 /* Cambiar el color general del texto de los enlaces en el navbar */

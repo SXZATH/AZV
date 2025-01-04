@@ -7,17 +7,103 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        /* Barra lateral */
+        #sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        #sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #f0f0f0;
+            display: block;
+            transition: 0.3s;
+        }
+
+        #sidebar a:hover {
+            color: #bebcbc;
+        }
+
+        #sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Ocultar el contenido de la barra lateral cuando esté cerrada */
+        .content {
+            transition: margin-left .5s;
+            padding: 20px;
+        }
+
+        /* Sección de proyectos internos y externos */
+        .card-body p {
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init();
+  
+  function openNav() {
+      document.getElementById("sidebar").style.width = "190px";
+      document.querySelector(".content").style.marginLeft = "250px";
+  }
+
+  function closeNav() {
+      document.getElementById("sidebar").style.width = "0";
+      document.querySelector(".content").style.marginLeft = "0";
+  }
+
+  function showSection(section) {
+      const internalSection = document.getElementById("internalSection");
+      const externalSection = document.getElementById("externalSection");
+      const frameworkSection = document.getElementById("frameworkSection");
+
+      // Mostrar la sección correspondiente y ocultar las demás
+      if (section === "internal") {
+          internalSection.style.display = "block";
+          externalSection.style.display = "none";
+          frameworkSection.style.display = "none";
+      } else if (section === "external") {
+          externalSection.style.display = "block";
+          internalSection.style.display = "none";
+          frameworkSection.style.display = "none";
+      } else if (section === "frameworks") {
+          frameworkSection.style.display = "block";
+          internalSection.style.display = "none";
+          externalSection.style.display = "none";
+      }
+  }
+
+
+  function showCommand(command) {
+      const commandDisplay = document.getElementById('commandDisplay');
+      const commandText = document.getElementById('commandText');
+      commandText.textContent = command;
+      commandDisplay.style.display = 'block';
+  }
 </script>
-<body>
+<body onload="showSection('internal')">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Suite | tools</a>
+            <a class="navbar-brand" href="#" onclick="openNav()">&#9776; Suite | Tools</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,9 +113,6 @@
                         <a class="nav-link active" aria-current="page" href="#home">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#proyectos">Proyectos</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#contacto">Contacto</a>
                     </li>
                 </ul>
@@ -37,127 +120,449 @@
         </div>
     </nav>
 
-    <!-- Sección Inicio -->
-    <section id="home">
-        <div class="container">
-            <h1 class="text-center">General Proyects</h1>
-            <p class="text-center">Bash proyects | OSINT</p>
-        </div>
-    </section>
+    <!-- Barra lateral -->
+    <div id="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#internal" id="LocalID" onclick="showSection('internal')">Principal</a>
+        <a href="#external" id="OtherslID" onclick="showSection('external')">Other/Tools</a>
+        <a href="#frameworks" id="FrameworksID" onclick="showSection('frameworks')">Frameworks</a>
+    </div>
 
-    <!-- Sección Proyectos -->
-    <section id="proyectos">
-        <div class="container">
-            <h2 class="text-center mb-4">Proyectos</h2>
-            <div class="row">
-                <!-- Proyecto AZV -->
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="azv.PNG" class="card-img-top" alt="AZV">
-                        <div class="card-body">
-                            <h5 class="card-title">AZV Suite</h5>
-                            <p class="card-text">AZV sistema de paquetes bash, similar a la instalación de librerías Python para desarrollo y ciberseguridad.</p>
-                            <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalAZV">
-                                Ver más
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Proyecto 2 (En desarrollo) -->
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="404.PNG" class="card-img-top" alt="Void">
-                        <div class="card-body">
-                            <p class="card-text">Proyecto en desarrollo</p>
-                            <span class="badge bg-warning text-dark">En Desarrollo</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Proyecto 3 (En desarrollo) -->
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="404.PNG" class="card-img-top" alt="Void">
-                        <div class="card-body">
-                            <p class="card-text">Proyecto en desarrollo</p>
-                            <span class="badge bg-warning text-dark">En Desarrollo</span>
-                        </div>
+    <!-- Contenido principal -->
+    <div class="content">
+        <!-- Sección Inicio -->
+        <section id="home">
+            <div class="container">
+                <h1 class="text-center">General Proyects</h1>
+                <p class="text-center">Bash proyects & OSINT</p>
+            </div>
+        </section>
+
+<!-- Sección de proyectos internos -->
+<section id="internalSection" style="display: block;">
+    <div class="container">
+        <h2 class="text-center mb-4">Proyectos Internos</h2>
+        <div class="row">
+            <!-- Proyecto AZV -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="azv.PNG" class="card-img-top" alt="AZV">
+                    <div class="card-body">
+                        <h5 class="card-title">AZV Suite</h5>
+                        <p class="card-text">AZV sistema de paquetes bash, similar a la instalación de librerías Python para desarrollo y ciberseguridad.</p>
+                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalAZV">
+                            Ver más
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Modal para AZV -->
-    <div class="modal fade custom-modal" id="modalAZV" tabindex="-1" aria-labelledby="modalAZVLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalAZVLabel">AZV Suite Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>AZV es un sistema de gestión de paquetes para Bash que simplifica la instalación de librerías y el scripting.</p>
-                    <ul>
-                        <li>Se instala y configura automáticamente para reducir la intervención manual.</li>
-                        <li>Los módulos son importados a scripts con 'source utils' para usar las funciones o variables dentro.</li>
-                        <li>Comandos de AZV:</li>
-                        <li>'azv --help' - Proporciona ayuda en la herramienta.</li>
-                        <li>'azv list' - Lista todos los módulos instalados en el sistema.</li>
-                        <li>'azv install' - Instala módulos como vulnhammer para seguridad SSH.</li>
-                        <li>'azv remove' - Remueve los módulos seleccionados.</li>
-                    </ul>
-                    <p>Opciones de descarga:</p>
-
-                    <!-- Dropdown para opciones de descarga -->
-                    <div class="dropdown" id="dropdownMENU">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="downloadDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Descargar
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="downloadDropdown">
-                            <!-- Opción de descarga directa -->
-                            <li>
-                                <a class="dropdown-item" href="https://www.dropbox.com/scl/fi/vrktgogwo8b64mparxvx5/setup.sh?rlkey=a6kzemfrm9986zk9054saxd3l&st=40i2c8as&dl=1" download="_blank">Descarga directa</a>
-                            </li>
-                            <!-- Opción para mostrar comando wget -->
-                            <li>
-                                <button class="dropdown-item" onclick="showCommand('wget https://www.dropbox.com/scl/fi/vrktgogwo8b64mparxvx5/setup.sh?dl=1')">Comando wget</button>
-                            </li>
-                            <!-- Opción para mostrar comando curl -->
-                            <li>
-                                <button class="dropdown-item" onclick="showCommand('curl -O https://www.dropbox.com/scl/fi/vrktgogwo8b64mparxvx5/setup.sh?dl=1')">Comando curl</button>
-                            </li>
-                        </ul>
+            <!-- Proyecto Kraken (En desarrollo) -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="kraken.png" class="card-img-top" alt="Void">
+                    <div class="card-body">
+                        <p class="card-text">Kraken Brute Force (Próximamente)</p>
+                        <span class="badge bg-warning text-dark">En Desarrollo</span>
                     </div>
-
-                    <!-- Espacio para mostrar el comando seleccionado -->
-                    <div id="commandDisplay" class="mt-3" style="display:none; background-color: #050505; padding: 10px; border-radius: 5px; color: #333;">
-                        <code id="commandText"></code>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Sección Contacto -->
-    <section id="contacto">
-        <div class="container text-center">
-            <h2>Contacto</h2>
-            <p>Discord user & gmail.</p>
-            <p><a class="text-white">sxzath | sxzath@gmail.com</a></p>
+</section>
+        <!-- Sección de herramientas externas -->
+        <section id="externalSection" style="display: none;">
+            <div class="container">
+                <h2 class="text-center mb-4">Herramientas Externas</h2>
+                <div class="row">
+                    <!-- Herramienta Hydra -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="Hydra-Software.jpg" class="card-img-top" alt="Hydra">
+                            <div class="card-body">
+                                <h5 class="card-title">Hydra</h5>
+                                <p class="card-text">Hydra es una herramienta para realizar ataques de fuerza bruta en diversos protocolos.</p>
+                                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#hydraAZV">
+                                    Ver más
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Herramienta Ncrack -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="ncrack-software.jpg" class="card-img-top" alt="Ncrack">
+                            <div class="card-body">
+                                <h5 class="card-title">Ncrack</h5>
+                                <p class="card-text">Ncrack es una herramienta de auditoría de seguridad para contraseñas y sistemas de acceso.</p>
+                                <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalNcrack">
+                                    Ver más
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Otra herramienta externa -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="404.PNG" class="card-img-top" alt="External Tool">
+                            <div class="card-body">
+                                <h5 class="card-title">Void</h5>
+                                <p class="card-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sección de Frameworks -->
+<section id="frameworkSection" style="display: none;">
+    <div class="container">
+        <h2 class="text-center mb-4">Frameworks</h2>
+        <div class="row">
+            <!-- Aquí puedes agregar los proyectos relacionados con frameworks -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="metasploit-framework.jpg" class="card-img-top" alt="Framework 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Metasploit framework</h5>
+                        <p class="card-text">Metasploit un poderoso y popular framework para pruebas de penetracion, payloads exploits entre mas.</p>
+                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalMetasploit">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="django-software.png" class="card-img-top" alt="Ncrack">
+                    <div class="card-body">
+                        <h5 class="card-title">Django framework</h5>
+                        <p class="card-text">Django es un framework para python en desarrollo web</p>
+                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modalDjango">
+                            Ver más
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Agrega más cards para otros frameworks -->
         </div>
-    </section>
+    </div>
+</section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto">
+            <div class="container text-center">
+                <h2>Contacto</h2>
+                <p>Discord user | gmail.</p>
+                <p><a class="text-white">sxzath | sxzath@gmail.com</a></p>
+            </div>
+        </section>
+    </div>
+
+<!-- Modal para AZV -->
+<div class="modal fade custom-modal" id="modalAZV" tabindex="-1" aria-labelledby="modalAZVLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAZVLabel">AZV Suite Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>AZV es un sistema de gestión de paquetes para Bash que simplifica la instalación de librerías y el scripting.</p>
+                <ul>
+                    <li>Se instala y configura automáticamente para reducir la intervención manual.</li>
+                    <li>Los módulos son importados a scripts con 'source utils' para usar las funciones o variables dentro.</li>
+                    <li>Comandos de AZV:</li>
+                    <li>'azv --help' - Proporciona ayuda en la herramienta.</li>
+                    <li>'azv list' - Lista todos los módulos instalados en el sistema.</li>
+                    <li>'azv install' - Instala módulos como vulnhammer para seguridad SSH.</li>
+                    <li>'azv remove' - Remueve los módulos seleccionados.</li>
+                </ul>
+                <p>Opciones de descarga:</p>
+
+                <!-- Botón de descarga que abre el modal con las opciones -->
+                <div class="dropdown" id="dropdownMENU">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="downloadDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Descargar
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="downloadDropdown">
+                        <!-- Opción de descarga directa -->
+                        <li>
+                            <a class="dropdown-item" href="https://www.dropbox.com/scl/fi/vrktgogwo8b64mparxvx5/setup.sh?rlkey=a6kzemfrm9986zk9054saxd3l&st=40i2c8as&dl=1" download="_blank">Descarga directa</a>
+                        </li>
+                        <!-- Opción para mostrar comando wget -->
+                        <li>
+                            <button class="dropdown-item" onclick="showCommand('wget https://www.dropbox.com/scl/fi/vrktgogwo8b64mparxvx5/setup.sh?dl=1')">Comando wget</button>
+                        </li>
+                        <!-- Opción para mostrar comando curl -->
+                        <li>
+                            <button class="dropdown-item" onclick="showCommand('curl -O https://www.dropbox.com/scl/fi/vrktgogwo8b64mparxvx5/setup.sh?dl=1')">Comando curl</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Espacio para mostrar el comando seleccionado -->
+                <div id="commandDisplay" class="mt-3" style="display:none; background-color: #050505; padding: 10px; border-radius: 5px; color: #333;">
+                    <code id="commandText"></code>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hydra Model -->
+<div class="modal fade custom-modal" id="hydraAZV" tabindex="-1" aria-labelledby="modalHYDRALabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalHYDRALabel">Hydra Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Hydra es una herramienta de ataques de fuerza bruta para protocolos de las más usadas.</p>
+                <ul>
+                    <li>Comandos de Hydra:</li>
+                    <li>'hydra -h' - Muestra la ayuda de la herramienta.</li>
+                    <li>'hydra -l <usuario> -p <contraseña> <IP> ssh' - Realiza un ataque de fuerza bruta sobre SSH con un usuario y contraseña especificados.</li>
+                    <li>'hydra -L <lista_usuarios> -P <lista_contraseñas> <IP> ssh' - Usa listas de usuarios y contraseñas para atacar el servicio SSH.</li>
+                    <li>'hydra -t 4 -L <lista_usuarios> -P <lista_contraseñas> <IP> http-get' - Ataque de fuerza bruta sobre HTTP GET con múltiples usuarios y contraseñas.</li>
+                    <li>'hydra -V -l <usuario> -P <contraseña> <IP> ftp' - Ataque a FTP mostrando detalles del progreso (modo verboso).</li>
+                    <li>'hydra -s <puerto> -l <usuario> -P <contraseña> <IP> <protocolo>' - Especifica un puerto personalizado para el protocolo objetivo.</li>
+                    <li>'hydra -C <archivo_creds> <IP> <protocolo>' - Usa un archivo con credenciales para un ataque de fuerza bruta (usuario:contraseña).</li>
+                    <li>'hydra -f -l <usuario> -P <contraseña> <IP> ssh' - Realiza el ataque y se detiene después de encontrar la primera contraseña correcta.</li>
+                    <li>'hydra -vV -l <usuario> -P <contraseña> <IP> <protocolo>' - Modo detallado para ver cada intento y el proceso completo.</li>
+                    <li>'hydra -h <URL> -l <usuario> -P <contraseña> http-post-form' - Realiza un ataque de fuerza bruta en un formulario HTTP POST.</li>
+                    <li>'hydra -t 1 -L <usuarios> -P <contraseñas> -o resultados.txt <IP> ssh' - Ataque con un solo hilo y guarda los resultados en un archivo de texto.</li>
+                </ul>
+                <p>Opciones de descarga:</p>
+
+                <!-- Botón de descarga que abre el modal con las opciones -->
+                <div class="dropdown" id="dropdownMENUHYDRA">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="downloadDropdownHydra" data-bs-toggle="dropdown" aria-expanded="false">
+                        Descargar
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="downloadDropdownHydra">
+                        <!-- Opción para mostrar comando wget -->
+                        <li>
+                            <button class="dropdown-item" onclick="showCommandHydra('git clone https://github.com/vanhauser-thc/thc-hydra.git')">[ GIT ]</button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" onclick="showCommandHydra('wget https://www.dropbox.com/scl/fi/kcstj6v2lqcywo7ymg4ud/setup_hydra.sh?rlkey=m33yy5nlnnu40k7hw05v3tijh&st=eoplh5ky&dl=1')">Auto Install [ DROPBOX ] </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Espacio para mostrar el comando seleccionado -->
+                <div id="commandDisplayHydra" class="mt-3" style="display:none; background-color: #050505; padding: 10px; border-radius: 5px; color: #333;">
+                    <code id="commandTextHydra"></code>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Metasploit -->
+<div class="modal fade custom-modal" id="modalMetasploit" tabindex="-1" aria-labelledby="modalMetasploitLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalMetasploitLabel">Metasploit framework details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Metasploit, un framework poderoso y popular de exploits y payloads destinado a hacking ético y pentesting.</p>
+                <ul>
+                    <li>Instalas Metasploit y lo abres con msfconsole [ sudo apt-get install msfconsole -y ]</li>
+                    <li>Buscas un exploit con search y lo seleccionas con use.</li>
+                    <li>Configuras un payload con set PAYLOAD</li>
+                    <li>Ejecutas el ataque con exploit.</li>
+                    <li>Usas módulos de post-explotación para realizar tareas adicionales.</li>
+                    <li>Nota: con RHOST seleccionas el host victima [remoto]</li>
+                    <li>Nota: con LHOST seleccionas el localhost por la ip [maquina atacante]</li>
+                    <li>Nota: con RPORT para puerto vicitima / remoto.</li>
+                    <li>Nota: con LPORT es para puerto local de la maquina atacante.</li>
+                </ul>
+                <p>Opciones de descarga:</p>
+
+                <!-- Botón de descarga que abre el modal con las opciones -->
+                <div class="dropdown" id="dropdownMENU">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="downloadDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Descargar
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="downloadDropdown">
+                        <li>
+                            <button class="dropdown-item" onclick="showCommandMetasploit('sudo apt-get install msfconsole')">[ APT COMMAND ]</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Espacio para mostrar el comando seleccionado -->
+                <div id="commandDisplayMetasploit" class="mt-3" style="display:none; background-color: #050505; padding: 10px; border-radius: 5px; color: #333;">
+                    <code id="commandTextMetasploit"></code>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para ncrack -->
+<div class="modal fade custom-modal" id="modalNcrack" tabindex="-1" aria-labelledby="modalNcrackLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalNcrackLabel">Ncrack tool details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Ncrack es una herramienta de fuerza bruta diseñada para pruebas de acceso y auditoría de contraseñas en varios servicios.</p>
+                <ul>
+                    <li>Comandos de Ncrack:</li>
+                    <li>'ncrack --help' - Proporciona ayuda sobre el uso de la herramienta.</li>
+                    <li>'ncrack list' - Lista todos los módulos disponibles en el sistema.</li>
+                    <li>'ncrack install' - Instala módulos adicionales, como herramientas para auditar SSH o otros servicios.</li>
+                    <li>'ncrack remove' - Elimina los módulos seleccionados.</li>
+                </ul>
+                </ul>
+                <p>Opciones de descarga:</p>
+
+                <!-- Botón de descarga que abre el modal con las opciones -->
+                <div class="dropdown" id="dropdownMENU">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="downloadDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Descargar
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="downloadDropdown">
+                        <!-- Opción para mostrar comando apt -->
+                        <li>
+                            <button class="dropdown-item" onclick="showCommandNcrack('sudo apt-get install ncrack')">[ APT COMMAND ]</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Espacio para mostrar el comando seleccionado -->
+                <div id="commandDisplayNcrack" class="mt-3" style="display:none; background-color: #050505; padding: 10px; border-radius: 5px; color: #333;">
+                    <code id="commandTextNcrack"></code>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para django -->
+<div class="modal fade custom-modal" id="modalDjango" tabindex="-1" aria-labelledby="modalDjangoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDjangoLabel">Django Framework</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Django es un framework de desarrollo web de código abierto y gratuito para Python. Está diseñado para facilitar la creación de aplicaciones web complejas y de alto rendimiento de manera rápida y eficiente.</p>
+                <ul>
+                    <li>se importa con ' import django '</li>
+                    <li>' from django.shortcuts import render '</li>
+                    <li>' from django.http import HttpResponse '</li>
+                    <li>Ex; crear proyecto con django ' django-admin startproject myproject ' </li>
+                    <li>Ex; Crear una app python dentro de un proyecto ' python manage.py startapp myapp '</li>
+                    <li>
+                        Ex: Ejemplo django de vista:
+                        def my_view(request):
+                           return HttpResponse("¡Hola, Mundo!")
+                    </li>
+                    <li>
+
+                        Ex: Renderizar plantilla HTML [ DJANGO ]
+                        def my_view(request):
+                          return render(request, 'index.html')
+
+                    </li>
+                </ul>
+                <p>Opciones de descarga:</p>
+
+                <!-- Botón de descarga que abre el modal con las opciones -->
+                <div class="dropdown" id="dropdownMENU">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="downloadDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Descargar
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="downloadDropdown">
+                        <li>
+                            <button class="dropdown-item" onclick="showCommandDjango('pip install django')">[ PIP COMMAND ]</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Espacio para mostrar el comando seleccionado -->
+                <div id="commandDisplayDjango" class="mt-3" style="display:none; background-color: #050505; padding: 10px; border-radius: 5px; color: #333;">
+                    <code id="commandTextDjango"></code>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showCommand(command) {
+        const commandDisplay = document.getElementById('commandDisplay');
+        const commandText = document.getElementById('commandText');
+        commandText.textContent = command;
+        commandDisplay.style.display = 'block';
+    }
+</script>
+
+<script>
+    function showCommandHydra(command) {
+        const commandDisplay = document.getElementById('commandDisplayHydra');
+        const commandText = document.getElementById('commandTextHydra');
+        commandText.textContent = command;
+        commandDisplay.style.display = 'block';
+    }
+</script>
+
+<script>
+    function showCommandMetasploit(command) {
+        const commandDisplay = document.getElementById('commandDisplayMetasploit');
+        const commandText = document.getElementById('commandTextMetasploit')
+        commandText.textContent = command;
+        commandDisplay.style.display = 'block';
+    }
+</script>
+
+<script>
+    function showCommandNcrack(command) {
+        const commandDisplay = document.getElementById('commandDisplayNcrack')
+        const commandText = document.getElementById('commandTextNcrack')
+        commandText.textContent = command;
+        commandDisplay.style.display = 'block';
+    }
+</script>
+
+<script>
+    function showCommandDjango(command) {
+        const commandDisplay = document.getElementById('commandDisplayDjango')
+        const commandText = document.getElementById('commandTextDjango')
+        commandText.textContent = command;
+        commandDisplay.style.display = 'block';
+    }
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function showCommand(command) {
-            const commandDisplay = document.getElementById('commandDisplay');
-            const commandText = document.getElementById('commandText');
-            commandText.textContent = command;
-            commandDisplay.style.display = 'block';
-        }
-    </script>
 </body>
 </html>
+
